@@ -2,7 +2,7 @@
 
 Welcome to my explorer-style blog! This is a test post.
 
-![Cool Image](/assets/icon/X.png=50x50)
+![Cool Image](/blog/assets/icon/X.png=50x50)
 
 This post lives in Folder1.
 
