@@ -5,6 +5,17 @@ let selectedTags = new Set();
 let selectedAuthors = new Set();
 let folderTree = {}; 
 let expandedFolders = new Set(); 
+let basePath = '';
+
+function getBasePath() {
+    if (basePath) return basePath;
+    const path = window.location.pathname;
+    const lastSlash = path.lastIndexOf('/');
+    basePath = lastSlash > 0 ? path.substring(0, lastSlash) : '';
+    if (basePath && !basePath.endsWith('/')) basePath += '/';
+    if (!basePath) basePath = './';
+    return basePath;
+} 
 
 async function init() {
     console.log("Initializing Bernardo's Blog...");
@@ -288,15 +299,15 @@ function renderHome() {
 
 function renderPinnedCard(p) {
     return `
-        <div onclick="window.location.hash='/articles/${p.folder}/${p.id}'" class="group relative p-8 rounded-[2.5rem] bg-gradient-to-br from-slate-900 to-slate-800 text-white cursor-pointer shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden border border-slate-700/50">
-            <div class="absolute -right-8 -top-8 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl transition-all"></div>
+        <div onclick="window.location.hash='/articles/${p.folder}/${p.id}'" class="group relative p-8 rounded-[2.5rem] bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 text-slate-900 dark:text-white cursor-pointer shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all overflow-hidden border border-slate-200 dark:border-slate-700/50">
+            <div class="absolute -right-8 -top-8 w-32 h-32 bg-blue-500/20 dark:bg-blue-500/20 rounded-full blur-3xl transition-all"></div>
             <div class="relative z-10">
                 <div class="flex items-center gap-3 mb-5">
                     <span class="px-2.5 py-1 bg-blue-600/80 text-[9px] font-black uppercase tracking-widest rounded-full">Featured</span>
                     <span class="text-[10px] text-slate-400 uppercase tracking-widest">${new Date(p.date).toLocaleDateString()}</span>
                 </div>
-                <h3 class="text-2xl font-black leading-tight">${p.title}</h3>
-                <div class="mt-4 flex flex-wrap gap-2 text-[9px] font-bold text-slate-300 uppercase tracking-widest">
+                <h3 class="text-2xl font-black leading-tight text-slate-900 dark:text-white">${p.title}</h3>
+                <div class="mt-4 flex flex-wrap gap-2 text-[9px] font-bold text-slate-500 dark:text-slate-300 uppercase tracking-widest">
                     ${(p.authors || []).map(a => `<span>@${a}</span>`).join(' ')}
                 </div>
             </div>
@@ -439,7 +450,7 @@ async function renderArticle(id) {
                 }
             }
             
-            if (src && !src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:')) src = `articles/${p.folder}/${src}`;
+            if (src && !src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:')) src = `${getBasePath()}articles/${p.folder}/${src}`;
             if (src?.includes('/assets/icon/')) src = src.replace('/assets/icon/', '/assets/icons/');
             return `<div class="my-10 flex flex-col items-center">
                         <img src="${src}" alt="${text || ''}" style="${sizeStyle}" class="rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 transition-all hover:scale-[1.01]${sizeStyle ? '' : ' max-w-full'}">
