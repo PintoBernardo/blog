@@ -5,17 +5,6 @@ let selectedTags = new Set();
 let selectedAuthors = new Set();
 let folderTree = {}; 
 let expandedFolders = new Set(); 
-let basePath = '';
-
-function getBasePath() {
-    if (basePath) return basePath;
-    const path = window.location.pathname;
-    const lastSlash = path.lastIndexOf('/');
-    basePath = lastSlash > 0 ? path.substring(0, lastSlash) : '';
-    if (basePath && !basePath.endsWith('/')) basePath += '/';
-    if (!basePath) basePath = './';
-    return basePath;
-} 
 
 async function init() {
     console.log("Initializing Bernardo's Blog...");
@@ -450,7 +439,7 @@ async function renderArticle(id) {
                 }
             }
             
-            if (src && !src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:')) src = `${getBasePath()}articles/${p.folder}/${src}`;
+            if (src && !src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:')) src = `articles/${p.folder}/${src}`;
             if (src?.includes('/assets/icon/')) src = src.replace('/assets/icon/', '/assets/icons/');
             return `<div class="my-10 flex flex-col items-center">
                         <img src="${src}" alt="${text || ''}" style="${sizeStyle}" class="rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 transition-all hover:scale-[1.01]${sizeStyle ? '' : ' max-w-full'}">
