@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article>
+    <bgcolor>#fff7ed</bgcolor>
+    <overlay>
+        <light>rgba(251, 191, 36, 0.1)</light>
+        <dark>rgba(251, 191, 36, 0.3)</dark>
+    </overlay>
+</article>

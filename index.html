@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bernardo's Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=DM+Sans:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.10/dist/typography.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script>
+        // Configure marked to use Prism for highlighting
+        const renderer = {
+            code(code, lang) {
+                const language = lang || 'plaintext';
+                const highlighted = Prism.languages[language] 
+                    ? Prism.highlight(code, Prism.languages[language], language)
+                    : code;
+                return `<pre class="language-${language}"><code class="language-${language}">${highlighted}</code></pre>`;
+            }
+        };
+        marked.use({ renderer });
+        marked.setOptions({
+            gfm: true,
+            breaks: true,
+            headerIds: true,
+            mangle: false,
+            smartLists: true,
+            smartypants: true
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        serif: ['Crimson Pro', 'Georgia', 'serif'],
+                    },
+                    colors: {
+                        explorer: {
+                            sidebar: '#f8fafc',
+                            header: '#ffffff',
+                            content: '#ffffff',
+                            darkSidebar: '#0f172a',
+                            darkHeader: '#020617',
+                            darkContent: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .prose { font-family: 'Crimson Pro', Georgia, serif; }
+        .prose h1, .prose h2, .prose h3, .prose h4 { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 700; }
+        .prose code { font-family: 'JetBrains Mono', monospace; }
+        .prose pre { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="font-sans bg-explorer-content dark:bg-explorer-darkContent text-slate-900 dark:text-slate-100 transition-colors duration-200">
+    <div class="flex h-screen flex-col overflow-hidden">
+        <!-- Explorer Header -->
+        <header class="h-14 border-b border-slate-200 dark:border-slate-800 bg-explorer-header dark:bg-explorer-darkHeader flex items-center px-6 space-x-6 z-20 shadow-sm">
+            <div class="flex items-center space-x-3">
+                <a href="#/" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all"><i data-lucide="home" class="w-5 h-5 text-slate-500"></i></a>
+                <div class="h-4 w-px bg-slate-200 dark:bg-slate-800"></div>
+                <div class="flex space-x-1">
+                    <button onclick="history.back()" class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                    <button onclick="history.forward()" class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                </div>
+            </div>
+            <div class="flex-1 flex items-center bg-slate-50 dark:bg-slate-900/50 rounded-xl px-4 py-1.5 text-xs font-mono border border-slate-200 dark:border-slate-800 shadow-inner">
+                <i data-lucide="terminal" class="w-3.5 h-3.5 mr-3 text-blue-500"></i>
+                <span id="currentPath" class="text-slate-500 dark:text-slate-400 uppercase tracking-widest">/root</span>
+            </div>
+            <div class="relative w-72">
+                <input type="text" id="searchInput" placeholder="Search..." class="w-full bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl px-10 py-1.5 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all font-medium">
+                <i data-lucide="search" class="absolute left-3.5 top-2 w-3.5 h-3.5 text-slate-400"></i>
+            </div>
+            <button id="themeToggle" class="p-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all">
+                <i data-lucide="sun" id="sunIcon" class="w-5 h-5"></i>
+                <i data-lucide="moon" id="moonIcon" class="hidden w-5 h-5"></i>
+            </button>
+        </header>
+
+        <div class="flex flex-1 overflow-hidden">
+            <!-- Sidebar -->
+            <aside class="w-72 border-r border-slate-200 dark:border-slate-800 bg-explorer-sidebar dark:bg-explorer-darkSidebar overflow-y-auto p-6 scrollbar-hide">
+                <div class="mb-10">
+                    <h2 class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-6">Favorites</h2>
+                    <nav class="space-y-1">
+                        <a href="#/" class="flex items-center space-x-3 p-2.5 rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-all hover:shadow-sm group">
+                            <i data-lucide="layout-grid" class="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="text-sm font-bold text-slate-600 dark:text-slate-300">Overview</span>
+                        </a>
+                        <a href="#/articles" class="flex items-center space-x-3 p-2.5 rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-all hover:shadow-sm group">
+                            <i data-lucide="database" class="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="text-sm font-bold text-slate-600 dark:text-slate-300">All Posts</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="mb-10">
+                    <h2 class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-6">Filter by Tag</h2>
+                    <div id="tagList" class="flex flex-wrap gap-2">
+                        <!-- Tags -->
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-6">FileSystem</h2>
+                    <nav id="folderList" class="space-y-0.5">
+                        <!-- Tree -->
+                    </nav>
+                <div class="mt-8 border-t border-slate-100 dark:border-slate-800 pt-6">
+                    <h2 class="px-2 text-[10px] font-black uppercase tracking-[0.2em] mb-4 text-slate-400">Authors</h2>
+                    <div id="authorList" class="flex gap-2 overflow-x-auto pb-2 px-1 no-scrollbar scroll-smooth">
+                        <!-- Injected -->
+                    </div>
+                </div>
+                </div>
+                </aside>
+            <!-- Main Content -->
+            <main id="mainContent" class="flex-1 overflow-y-auto p-12 bg-white dark:bg-explorer-darkContent relative">
+                <!-- Injected -->
+            </main>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
