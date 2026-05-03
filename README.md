@@ -127,7 +127,6 @@ echo "hello"
 ```
 </pre>
 
-For shell/terminal blocks use `bash` or `sh` - these get styled like a Linux terminal with colored output.
 
 ### Lists
 
