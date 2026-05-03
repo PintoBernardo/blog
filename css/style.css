@@ -21,10 +21,50 @@
     background: #94a3b8;
 }
 
-/* Prose overrides for better typography in articles */
+/* Article text spacing */
+.prose p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #475569;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Article text spacing */
+.prose p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
 .prose h1, .prose h2, .prose h3 {
     margin-top: 1.5em;
     margin-bottom: 0.5em;
+}
+
+.prose h1 {
+    font-size: 2rem;
+}
+
+.prose h2 {
+    font-size: 1.5rem;
+}
+
+.prose h3 {
+    font-size: 1.25rem;
 }
 
 .prose img {
@@ -51,4 +91,415 @@
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Prose styles for articles */
+.prose {
+    max-width: 65ch;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+}
+
+.prose p {
+    margin-bottom: 1em;
+}
+
+.prose h1, .prose h2, .prose h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+.prose h1 { font-size: 1.75rem; }
+.prose h2 { font-size: 1.375rem; }
+.prose h3 { font-size: 1.125rem; }
+
+.prose a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.prose a:hover {
+    text-decoration: underline;
+}
+
+.prose strong {
+    font-weight: 600;
+}
+
+/* Inline code in paragraphs */
+.prose p code {
+    background: #f1f5f9;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    color: #1e293b;
+}
+
+.dark .prose p code {
+    background: #334155;
+    color: #e2e8f0;
+}
+
+.prose ul {
+    padding-left: 1.25rem;
+    list-style-type: disc;
+}
+
+.prose ul li::marker {
+    color: #3b82f6;
+}
+
+.prose blockquote {
+    border-left: 4px solid #3b82f6;
+    background: #eff6ff;
+    padding: 0.75rem 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    font-style: italic;
+}
+
+.dark .prose blockquote {
+    background: #1e3a5f;
+}
+
+/* Todo/checklist */
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+}
+
+.todo-item input[type="checkbox"] {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #94a3b8;
+    border-radius: 0.25rem;
+    cursor: default;
+    flex-shrink: 0;
+}
+
+.todo-item input[type="checkbox"]:checked {
+    background: #22c55e;
+    border-color: #22c55e;
+}
+
+.todo-item.done span {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* Code block styling */
+.code-block {
+    font-size: 0.7rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.dark .code-block {
+    border-color: #334155;
+    background: #0f0f0f;
+}
+
+.code-block-header {
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.dark .code-block-header {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.code-with-lines {
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.4;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    color: #1e293b;
+    background: transparent !important;
+}
+
+.code-with-lines .code-line {
+    display: flex;
+}
+
+.code-with-lines .line-num {
+    width: 1.5rem;
+    color: #94a3b8;
+    text-align: right;
+    padding-right: 0.5rem;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.code-with-lines .line-text {
+    flex: 1;
+    white-space: pre;
+    color: inherit;
+}
+
+.dark .code-with-lines {
+    color: #e2e8f0;
+}
+
+.dark .code-with-lines .line-num {
+    color: #475569;
+}
+
+/* Todo box styling */
+.todo-box {
+    font-family: monospace;
+    font-size: 0.9em;
+}
+.todo-box.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* Shell block */
+.shell-block {
+    border: 1px solid #1e293b;
+    background: #0a0a0a;
+    border-radius: 0.5rem;
+}
+
+.shell-block .flex.gap-1\.5 {
+    display: flex;
+    gap: 6px;
+}
+
+.shell-block pre {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    overflow-x: auto;
+    color: #22c55e;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.dark .code-block {
+    border: 1px solid #1e293b;
+    background: #0f0f0f;
+}
+
+.code-block-header {
+    background: #f1f5f9;
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.dark .code-block-header {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+/* Code block styling */
+.code-block {
+    font-size: 0.7rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.dark .code-block {
+    border-color: #334155;
+}
+
+.code-block-header {
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.dark .code-block-header {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.code-with-lines {
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.4;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    color: #1e293b;
+    position: relative;
+    background: transparent !important;
+}
+
+.code-with-lines .code-line {
+    display: flex;
+}
+
+.code-with-lines .line-num {
+    width: 1.5rem;
+    color: #94a3b8;
+    text-align: right;
+    padding-right: 0.5rem;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.code-with-lines .line-text {
+    flex: 1;
+    white-space: pre;
+}
+
+.dark .code-with-lines {
+    color: #e2e8f0;
+}
+
+.dark .code-with-lines .line-num {
+    color: #475569;
+}
+
+/* Todo box styling */
+.todo-box {
+    font-family: monospace;
+    font-size: 0.9em;
+}
+.todo-box.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.shell-block {
+    border: 1px solid #1e293b;
+    background: #0a0a0a;
+    border-radius: 0.5rem;
+}
+
+.shell-block .flex gap-1.5 {
+    display: flex;
+    gap: 6px;
+}
+
+.shell-block pre {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    overflow-x: auto;
+    color: #22c55e;
+}
+
+/* Blockquote styles */
+.prose blockquote {
+    border-left: 4px solid #3b82f6;
+    background: #eff6ff;
+    padding: 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.dark .prose blockquote {
+    background: #1e3a5f;
+    border-color: #3b82f6;
+}
+
+/* List bullets */
+.prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.prose ul li::marker {
+    color: #3b82f6;
+}
+
+/* Todo/checklist styles */
+.prose input[type="checkbox"] {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.prose input[type="checkbox"]:checked {
+    background: #22c55e;
+    border-color: #22c55e;
+}
+
+.code-block pre {
+    overflow-x: auto;
+}
+
+.code-with-lines {
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.4;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    color: #1e293b;
+    background: transparent !important;
+    position: relative;
+}
+
+.code-with-lines .code-line {
+    display: flex;
+    line-height: inherit;
+}
+
+.code-with-lines .line-num {
+    width: 1.5rem;
+    color: #94a3b8;
+    text-align: right;
+    padding-right: 0.5rem;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.code-with-lines .line-text {
+    flex: 1;
+    white-space: pre;
+}
+
+.dark .code-with-lines {
+    color: #e2e8f0;
+}
+
+.dark .code-with-lines .line-num {
+    color: #475569;
+}
+
+.dark .code-block pre {
+    background: #0a0a0a;
+    color: #e2e8f0;
+}
+}
+
+.code-with-lines code {
+    display: block;
+    color: #e2e8f0;
+}
+
+.code-with-lines .line {
+    display: block;
+    min-height: 1em;
+}
+
+.code-with-lines .line-number {
+    position: absolute;
+    left: 0.35rem;
+    width: 1.1rem;
+    color: #475569;
+    font-size: 0.65rem;
+    -webkit-user-select: none;
+    user-select: none;
+    text-align: right;
+}
+
+/* Toast notification */
+.toast-notification {
+    animation: fadeInUp 0.3s ease;
+    z-index: 9999;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translate(-50%, 10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.dark .toast-notification {
+    background: #334155;
 }

@@ -2,31 +2,12 @@
 <extra>
     <blogName>Bernardo's Blog</blogName>
     <folders>
-        <folder name="Tech/AI">
-            <color>rgb(16, 185, 129)</color>
-        </folder>
-        <folder name="Tech">
-            <color>rgb(16, 185, 129)</color>
-        </folder>
-        <folder name="Folder1/Folder2">
+        <folder name="Projects">
             <color>rgb(59, 130, 246)</color>
-        </folder>
-        <folder name="Folder1">
-            <color>rgb(59, 130, 246)</color>
-        </folder>
-        <folder name="Gaming">
-            <color>rgb(239, 68, 68)</color>
-        </folder>
-        <folder name="Lifestyle">
-            <color>rgb(168, 85, 247)</color>
-        </folder>
-        <folder name="TestFolder">
-            <color>rgb(245, 158, 11)</color>
         </folder>
     </folders>
     <quickLinks>
-        <link name="GitHub" url="https://github.com" icon="assets/icons/github.svg" />
-        <link name="Twitter" url="https://twitter.com" icon="assets/icons/X.png" />
+        <link name="GitHub" url="https://github.com/pintobernardo" icon="assets/icons/github.svg" />
     </quickLinks>
     <defaults>
         <bgcolor>#ffffff</bgcolor>

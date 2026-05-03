@@ -1,82 +1,16 @@
 {
   "articles": [
     {
-      "id": "cool-post",
-      "title": "This is a cool post",
-      "path": "Folder1/this-is-a-cool-post.md",
-      "folder": "Folder1",
+      "id": "02-05-2026-blog-intro",
+      "title": "Introduction",
+      "path": "Projects/Blog/02-05-2026-blog-intro/02-05-2026-blog-intro.md",
+      "folder": "Projects",
       "date": "2026-05-02",
-      "authors": ["Bernardo", "Gemini"],
+      "authors": ["Bernardo Pinto"],
       "recommended": true,
       "pinned": true,
-      "tags": ["personal", "featured"]
-    },
-    {
-      "id": "tech-future",
-      "title": "The Future of Tech",
-      "path": "Tech/tech-future.md",
-      "folder": "Tech",
-      "date": "2026-04-20",
-      "authors": ["Tech Enthusiast"],
-      "recommended": true,
-      "pinned": false,
-      "tags": ["tech", "future"]
-    },
-    {
-      "id": "ai-2026",
-      "title": "AI in 2026",
-      "path": "Tech/AI/ai-2026.md",
-      "folder": "Tech/AI",
-      "date": "2026-05-02",
-      "authors": ["AI Specialist", "Gemini"],
-      "recommended": false,
-      "pinned": false,
-      "tags": ["tech", "ai"]
-    },
-    {
-      "id": "ai-2027",
-      "title": "AI in 2026",
-      "path": "Tech/AI/ai-2026.md",
-      "folder": "Tech/AI/27",
-      "date": "2026-05-02",
-      "authors": ["AI Specialist"],
-      "recommended": false,
-      "pinned": false,
-      "tags": ["tech", "ai"]
-    },
-    {
-      "id": "elden-ring-review",
-      "title": "Elden Ring: A Masterpiece",
-      "path": "Gaming/elden-ring.md",
-      "folder": "Gaming",
-      "date": "2026-05-01",
-      "authors": ["Bernardo", "Gamer"],
-      "recommended": false,
-      "pinned": true,
-      "tags": ["gaming", "review"]
-    },
-    {
-      "id": "morning-routine",
-      "title": "My Morning Routine",
-      "path": "Lifestyle/morning-routine.md",
-      "folder": "Lifestyle",
-      "date": "2026-04-25",
-      "authors": ["Bernardo"],
-      "recommended": false,
-      "pinned": false,
-      "tags": ["lifestyle", "personal"]
-    },
-    {
-      "id": "additional-test",
-      "title": "Additional Test Post",
-      "path": "TestFolder/additional-test.md",
-      "folder": "TestFolder",
-      "date": "2026-05-02",
-      "authors": ["Tester"],
-      "recommended": true,
-      "pinned": false,
-      "tags": ["test", "new"]
+      "tags": ["projects", "web"]
     }
   ],
-  "folders": ["Folder1", "Tech", "Tech/AI", "Gaming", "Lifestyle", "TestFolder"]
+  "folders": ["Projects", "Projects/Blog"]
 }
